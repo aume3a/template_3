@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Lovmate.com – Smart, Modern & Secure Online Dating Platform</title>
+  <meta name="description"
+    content="Lovmate.com is a modern and secure online dating platform where you can meet new people, chat safely, and build meaningful relationships. Enjoy fast login, verified profiles, smooth messaging, and complete privacy protection. Join today and find your perfect match.">
+  <meta name="keywords"
+    content="lovmate, lovmate.com, dating site, online dating, matchmaking, meet singles, secure chat, relationship platform, find match, modern dating website">
+  <meta name="author" content="Lovmate.com">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="en">
+  <meta property="og:title" content="Lovmate.com – Smart & Secure Online Dating">
+  <meta property="og:description"
+    content="Meet new people, chat safely, and enjoy real connections on Lovmate.com. Verified profiles, easy login, and full privacy protection.">
+  <meta property="og:url" content="https://lovmate.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://lovmate.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lovmate.com – Modern Dating Platform">
+  <meta name="twitter:description" content="Find real connections, chat safely, and meet singles on Lovmate.com.">
+  <meta name="twitter:image" content="https://lovmate.com/og-image.jpg">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #ffeef5, #ffdee8);
+    }
+
+    .stage {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px
+    }
+
+    .card {
+      width: 100%;
+      max-width: 1200px;
+      background: linear-gradient(180deg, #ffffff, #ffe9f1);
+      border-radius: 20px;
+      overflow: visible;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(12, 18, 30, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 18px;
+      min-height: 520px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 6px 0 6px;
+      position: relative;
+      z-index: 30;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #d6336c;
+      font-size: 20px
+    }
+
+    .logo .mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #ff76a1, #ff9d78);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(255, 118, 161, 0.25);
+      animation: softPulse 3.8s ease-in-out infinite
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav {
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #555;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+
+    .nav a:hover {
+      color: #d6336c;
+      background: #fff;
+    }
+
+    .menu {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 12px;
+      background: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      color: #d6336c;
+      font-size: 18px;
+    }
+
+    .nav.open {
+      display: flex;
+      position: absolute;
+      top: 72px;
+      right: 18px;
+      flex-direction: column;
+      background: #fff;
+      padding: 8px;
+      border-radius: 14px;
+      box-shadow: 0 16px 40px rgba(12, 18, 30, 0.12);
+      z-index: 40;
+      min-width: 160px;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 8px
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #222
+    }
+
+    p.lead {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.5;
+      max-width: 70ch
+    }
+
+    .cta-wrap {
+      padding: 0 8px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #ff76a1, #ff9d78);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      font-weight: 700;
+      padding: 12px 50px;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(255, 118, 161, 0.25);
+      animation: softPulse 3.6s ease-in-out infinite;
+      text-decoration: none;
+    }
+
+    .btn-primary.is-loading {
+      pointer-events: none;
+      opacity: 0.92;
+      animation: none;
+    }
+
+    .play {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+      color: #d6336c;
+      font-weight: 700;
+      cursor: pointer;
+      animation: softPulse 4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #ec0f5d;
+      margin-top: 8px;
+    }
+
+    .visual {
+      position: relative;
+      border-radius: 16px;
+      overflow: visible;
+      padding: 8px 8px 18px;
+    }
+
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 420px;
+    }
+
+    .swipe-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 16px 36px rgba(12, 18, 30, 0.12);
+      touch-action: none;
+      user-select: none;
+      will-change: transform;
+      transform-origin: 50% 100%;
+    }
+
+    .swipe-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .swipe-meta {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 48px 16px 16px;
+      background: linear-gradient(180deg, transparent, rgba(20, 10, 20, 0.72));
+      color: #fff;
+    }
+
+    .swipe-meta b {
+      font-size: 18px;
+      display: block;
+    }
+
+    .swipe-meta small {
+      opacity: 0.9;
+      font-size: 12px;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 6px 8px
+    }
+
+    .feature {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .feature .icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: white;
+      color: #d6336c;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+      animation: softPulse var(--dur, 4.6s) ease-in-out infinite
+    }
+
+    .feature b {
+      font-size: 15px;
+      color: #222;
+      display: block;
+    }
+
+    .feature small {
+      color: #666;
+      font-size: 13px
+    }
+
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 18px 8px;
+      text-align: center;
+    }
+
+    .proof b {
+      display: block;
+      color: #d6336c;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .proof span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .band {
+      padding: 8px;
+    }
+
+    .band h2 {
+      font-size: 18px;
+      color: #222;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .why-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .why-row p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.45;
+    }
+
+    .why-row strong {
+      display: block;
+      color: #222;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .flow {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .flow li {
+      position: relative;
+      padding-top: 36px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .flow li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ff76a1, #ff9d78);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+    }
+
+    .flow strong {
+      display: block;
+      color: #222;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      color: #888;
+      font-size: 13px;
+      padding: 8px 6px
+    }
+
+    .sms-footer {
+      position: fixed;
+      right: 18px;
+      bottom: 28px;
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 24px 56px rgba(12, 18, 30, 0.14);
+      color: #d6336c;
+      font-weight: 900;
+      cursor: pointer;
+      z-index: 9999;
+      animation: softPulse 4.2s ease-in-out infinite
+    }
+
+    @keyframes softPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 12px 30px rgba(255, 118, 161, 0.18)
+      }
+
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 18px 46px rgba(255, 118, 161, 0.22)
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 12px 30px rgba(255, 118, 161, 0.18)
+      }
+    }
+
+    @media(min-width:900px) {
+      .card {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        padding: 22px;
+        align-items: start;
+      }
+
+      .top {
+        grid-column: 1 / -1;
+      }
+
+      .hero-copy {
+        grid-column: 1;
+      }
+
+      .intro {
+        padding-right: 12px;
+      }
+
+      .cta-wrap {
+        padding-right: 8px;
+      }
+
+      .features {
+        grid-column: 1;
+        padding: 10px 8px;
+      }
+
+      .visual {
+        grid-column: 2;
+        grid-row: 2 / 4;
+        min-height: 360px;
+        padding: 8px 18px 28px 8px;
+      }
+
+      .deck {
+        height: 100%;
+        min-height: 440px;
+      }
+
+      .nav {
+        display: flex;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .play {
+        width: 56px;
+        height: 56px
+      }
+
+      .proof,
+      .band,
+      .foot {
+        grid-column: 1 / -1;
+      }
+
+      .foot {
+        padding: 12px 6px
+      }
+    }
+
+    @media(min-width:1200px) {
+      .card {
+        max-width: 1100px;
+        border-radius: 24px
+      }
+
+      h1 {
+        font-size: 32px
+      }
+    }
+
+    @media(max-width:899px) {
+      .stage {
+        padding: 0;
+      }
+
+      .card {
+        max-width: 100%;
+        border-radius: 0;
+        width: 100%;
+        padding: 0 0 28px;
+        gap: 0;
+        min-height: 100vh;
+      }
+
+      .top {
+        padding: 12px 16px;
+      }
+
+      .hero-copy {
+        width: 100%;
+        min-height: 45vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px 20px;
+        box-sizing: border-box;
+      }
+
+      .intro {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      p.lead {
+        font-size: 14px;
+      }
+
+      .cta-wrap {
+        width: 100%;
+        margin: 14px 0 0;
+        padding: 0;
+      }
+
+      .features {
+        display: none;
+      }
+
+      .visual {
+        width: 100%;
+        margin: 36px 0 40px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .deck {
+        width: 58%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+      }
+
+      .swipe-meta b {
+        font-size: 15px;
+      }
+
+      .swipe-meta {
+        padding: 36px 14px 14px;
+      }
+
+      .features {
+        padding: 12px 20px;
+      }
+
+      .proof,
+      .band {
+        padding: 18px 20px;
+      }
+
+      .why-row,
+      .flow {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .foot {
+        padding: 8px 20px;
+      }
+    }
+
+    @media(max-width:420px) {
+      .logo .mark {
+        width: 40px;
+        height: 40px
+      }
+
+      .proof b {
+        font-size: 16px;
+      }
+
+      .proof span {
+        font-size: 11px;
+      }
+
+      .deck {
+        width: 56%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage">
+    <div class="card">
+
+      <div class="top">
+        <div class="logo">
+          <div class="mark">♡</div>Lovmate
+        </div>
+        <div class="top-right">
+          <nav class="nav" id="nav">
+            <a href="#discover">Browse</a>
+            <a href="#discover">Matches</a>
+            <a href="#cta" data-signup>Chat</a>
+            <a href="#cta" data-signup>Signup</a>
+          </nav>
+          <button class="menu" id="menuBtn" type="button" aria-label="menu">☰</button>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="intro">
+          <h1>Find your perfect match</h1>
+          <p class="lead">Meet real people and start meaningful connections. Beautiful, soft and modern dating
+            experience.
+          </p>
+        </div>
+
+        <div class="cta-wrap">
+          <div class="cta-row">
+            <button class="btn-primary" id="cta" type="button">Signup</button>
+            <div class="play" id="play" role="button" tabindex="0" aria-label="play demo">▶</div>
+          </div>
+          <p class="hint">You will be redirected to the signup page.</p>
+        </div>
+      </div>
+
+      <div class="visual" id="discover">
+        <div class="deck" id="deck"></div>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon">✓</div>
+          <div><b>Verified profiles</b><small>Real people, real photos</small></div>
+        </div>
+        <div class="feature">
+          <div class="icon">💬</div>
+          <div><b>Private chat</b><small>Secure & encrypted</small></div>
+        </div>
+        <div class="feature">
+          <div class="icon">🎯</div>
+          <div><b>Smart matching</b><small>Interest-based pairing</small></div>
+        </div>
+      </div>
+
+      <div class="proof">
+        <div><b>2.4M+</b><span>Active members</span></div>
+        <div><b>18k</b><span>Online now</span></div>
+        <div><b>4.9★</b><span>Rating</span></div>
+        <div><b>40+</b><span>Countries</span></div>
+      </div>
+
+      <section class="band why">
+        <h2>Why join</h2>
+        <div class="why-row">
+          <div>
+            <strong>Real people</strong>
+            <p>Verified profiles, not fake photos.</p>
+          </div>
+          <div>
+            <strong>Private chat</strong>
+            <p>Talk safely after you match.</p>
+          </div>
+          <div>
+            <strong>Smart matches</strong>
+            <p>People who fit your interest.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band how">
+        <h2>How it works</h2>
+        <ol class="flow">
+          <li><strong>Signup here</strong>Tap Signup on Lovmate.</li>
+          <li><strong>Trusted page</strong>Open the secure partner form.</li>
+          <li><strong>Finish form</strong>Create your profile in a minute.</li>
+          <li><strong>Come back</strong>Return and start matching.</li>
+        </ol>
+      </section>
+
+      <div class="foot">
+        <div>© Lovmate</div>
+        <div>No ads · 18+</div>
+      </div>
+
+      <div class="sms-footer" id="smsBtn" title="Message us">✉️</div>
+
+    </div>
+  </div>
+
+  <script>
+    const LINKS = {
+      US: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      GB: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      DE: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      NO: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      AU: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      CH: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      DK: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      SE: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      BE: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      NZ: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      AT: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      CA: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      HU: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      NL: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      CZ: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      FI: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      FR: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      IT: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      IE: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      SI: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+      LU: "https://bgeqbv.sereneloves.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2086287&s3=emily&click_id=emily",
+
+      RO: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      PL: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      PT: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      SK: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      GR: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      BG: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      HR: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      LT: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      LV: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      EE: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      CO: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      PE: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      JP: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      IL: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      EG: "https://bgeqbv.dlstinguishedate.net/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2076043&s3=Amd&click_id=Amd",
+      BD: "https:discord.gg/senexia",
+
+    };
+
+    const FALLBACK_LINK = "https://bgeqbv.exxclusivedating.com/?utm_source=da57dc555e50572d&ban=other&j1=1&s1=175893&s2=2004430";
+    const CLICK_DELAY_MIN = 800;
+    const CLICK_DELAY_MAX = 1200;
+    const GEO_WAIT_MAX = 1200;
+
+    let GEO_COUNTRY = null;
+    let GEO_READY = false;
+    let IS_VPN = false;
+
+    let geoPromiseResolve;
+    const geoPromise = new Promise(res => { geoPromiseResolve = res; });
+
+    async function preDetectGeo() {
+      try {
+        const res = await fetch("https://ipwho.is/", { cache: "no-store" });
+        const d = await res.json();
+
+        if (d) {
+          if (d.country_code) {
+            GEO_COUNTRY = d.country_code.toUpperCase();
+          }
+
+          IS_VPN = (
+            d.proxy === true ||
+            d.vpn === true ||
+            d.hosting === true
+          );
+        }
+      } catch (e) {
+        // silent — fallback link is used
+      } finally {
+        GEO_READY = true;
+        geoPromiseResolve();
+      }
+    }
+
+    preDetectGeo();
+
+    let routing = false;
+
+    function pickTarget() {
+      if (IS_VPN === true) return FALLBACK_LINK;
+      if (GEO_COUNTRY && LINKS[GEO_COUNTRY]) return LINKS[GEO_COUNTRY];
+      return FALLBACK_LINK;
+    }
+
+    async function routeUser() {
+      if (routing) return;
+      routing = true;
+
+      const cta = document.getElementById('cta');
+      if (cta) {
+        cta.classList.add('is-loading');
+        cta.textContent = 'Redirecting…';
+      }
+
+      if (!GEO_READY) {
+        await Promise.race([
+          geoPromise,
+          new Promise(r => setTimeout(r, GEO_WAIT_MAX))
+        ]);
+      }
+
+      const target = pickTarget();
+      const delay = CLICK_DELAY_MIN + Math.floor(Math.random() * (CLICK_DELAY_MAX - CLICK_DELAY_MIN));
+
+      setTimeout(() => {
+        window.location.href = target;
+      }, delay);
+    }
+
+    const PROFILES = [
+      { name: "Ava, 24", note: "2 km away", img: "img/img1.jpg" },
+      { name: "Mia, 26", note: "Loves late-night chats", img: "img/img2.jpg" },
+      { name: "Luna, 23", note: "New this week", img: "img/img3.jpeg" },
+      { name: "Nora, 27", note: "Verified profile", img: "img/img4.jpg" },
+      { name: "Elle, 25", note: "Nearby now", img: "img/img5.jpg" },
+      { name: "Ana, 18", note: "Nearby now", img: "img/img6.jpg" },
+      { name: "Nia, 19", note: "Nearby now", img: "img/img7.jpeg" },
+      { name: "Elle, 25", note: "Nearby now", img: "img/img8.jpeg" }
+    ];
+
+    const deck = document.getElementById('deck');
+    let dragging = false;
+    let busy = false;
+    let topAbort;
+
+    function stackOffset(fromTop) {
+      if (fromTop <= 0) return 'translateX(0) rotate(0deg)';
+      const n = Math.min(fromTop, 3);
+      return 'translateX(' + (n * 14) + 'px) rotate(' + (-7.5 * n) + 'deg)';
+    }
+
+    function restack() {
+      const cards = [...deck.querySelectorAll('.swipe-card')];
+      cards.forEach((card, i) => {
+        const fromTop = cards.length - 1 - i;
+        card.style.zIndex = String(i + 1);
+        card.style.transition = 'transform 280ms ease';
+        card.style.transform = stackOffset(fromTop);
+      });
+    }
+
+    function renderDeck() {
+      deck.innerHTML = "";
+      PROFILES.forEach((p) => {
+        const card = document.createElement('article');
+        card.className = 'swipe-card';
+        card.innerHTML =
+          '<img src="' + p.img + '" alt="">' +
+          '<div class="swipe-meta"><b>' + p.name + '</b><small>' + p.note + '</small></div>';
+        deck.appendChild(card);
+      });
+      restack();
+      bindTopCard();
+    }
+
+    function bindTopCard() {
+      if (topAbort) topAbort.abort();
+      topAbort = new AbortController();
+      const signal = topAbort.signal;
+      const cards = deck.querySelectorAll('.swipe-card');
+      const top = cards[cards.length - 1];
+      if (!top) return;
+
+      let startX = 0;
+      let dx = 0;
+
+      const onDown = (x) => {
+        dragging = true;
+        startX = x;
+        dx = 0;
+        top.style.transition = 'none';
+      };
+
+      const onMove = (x) => {
+        if (!dragging || busy) return;
+        dx = x - startX;
+        const rot = dx / 18;
+        top.style.transform = 'translateX(' + dx + 'px) rotate(' + rot + 'deg)';
+      };
+
+      const onUp = () => {
+        if (!dragging) return;
+        dragging = false;
+        if (Math.abs(dx) > 70) {
+          fling(dx > 0 ? 1 : -1);
+        } else {
+          restack();
+        }
+        dx = 0;
+      };
+
+      top.addEventListener('pointerdown', (e) => {
+        top.setPointerCapture(e.pointerId);
+        onDown(e.clientX);
+      }, { signal });
+      top.addEventListener('pointermove', (e) => onMove(e.clientX), { signal });
+      top.addEventListener('pointerup', onUp, { signal });
+      top.addEventListener('pointercancel', onUp, { signal });
+    }
+
+    function fling(dir) {
+      if (busy) return;
+      const cards = deck.querySelectorAll('.swipe-card');
+      const top = cards[cards.length - 1];
+      if (!top) return;
+      busy = true;
+      top.style.transition = 'transform 320ms ease';
+      top.style.transform = 'translateX(' + (dir * 640) + 'px) rotate(' + (dir * 16) + 'deg)';
+      setTimeout(() => {
+        top.style.transition = 'none';
+        deck.insertBefore(top, deck.firstChild);
+        restack();
+        bindTopCard();
+        busy = false;
+      }, 320);
+    }
+
+    renderDeck();
+    setInterval(() => {
+      if (!dragging && !busy) fling(-1);
+    }, 3800);
+
+    const playBtn = document.getElementById('play');
+    const smsBtn = document.getElementById('smsBtn');
+    const ctaBtn = document.getElementById('cta');
+
+    if (playBtn) {
+      playBtn.addEventListener('click', () => {
+        playBtn.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.96)' }, { transform: 'scale(1)' }], { duration: 220 });
+        routeUser();
+      });
+    }
+
+    if (smsBtn) {
+      smsBtn.addEventListener('click', () => {
+        smsBtn.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-8px)' }, { transform: 'translateY(0)' }], { duration: 220 });
+        routeUser();
+      });
+    }
+
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', () => {
+        ctaBtn.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.96)' }, { transform: 'scale(1)' }], { duration: 180 });
+        routeUser();
+      });
+    }
+
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('nav');
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+    }
+
+    document.querySelectorAll('[data-signup]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        routeUser();
+      });
+    });
+
+    document.querySelectorAll('.feature .icon').forEach(icon => {
+      icon.addEventListener('pointerdown', () => icon.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-6px)' }, { transform: 'translateY(0)' }], { duration: 160 }));
+    });
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZFEXDXMRK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-5ZFEXDXMRK');
+  </script>
+</body>
+
+</html>
